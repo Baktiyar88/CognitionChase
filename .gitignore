@@ -47,6 +47,27 @@ ExportedObj/
 *.opendb
 *.VC.db
 
+
+# Unity binary assets
+*.psd
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.mov
+*.avi
+*.wav
+*.mp3
+*.fbx
+*.obj
+*.ttf
+*.otf
+
+# Big Unity files (если используешь)
+*.unitypackage
+*.blend
+
+
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
