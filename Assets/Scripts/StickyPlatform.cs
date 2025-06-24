@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StickyPlatform:MonoBehaviour
+public class StickyPlatform : MonoBehaviour
 {
 
 

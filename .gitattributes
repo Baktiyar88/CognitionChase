@@ -1,0 +1,47 @@
+# Устанавливаем автоопределение текстовых файлов
+* text=auto
+
+# Явно указываем типы файлов, которые должны быть в текстовом виде
+*.cs     text eol=lf
+*.shader text eol=lf
+*.cginc  text eol=lf
+*.txt    text eol=lf
+*.md     text eol=lf
+*.json   text eol=lf
+*.xml    text eol=lf
+*.yml    text eol=lf
+*.asmdef text eol=lf
+*.uxml   text eol=lf
+*.uss    text eol=lf
+
+# Бинарные файлы — отключаем обработку текста
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.psd    binary
+*.fbx    binary
+*.mp3    binary
+*.ogg    binary
+*.wav    binary
+*.unity  binary
+*.prefab binary
+*.anim   binary
+*.controller binary
+*.mat    binary
+*.asset  binary
+
+# Unity-специфичные файлы
+*.meta   text eol=lf
+
+# Шрифт и лицензионные файлы
+*.otf    binary
+*.ttf    binary
+*.license text eol=lf
+*.OFL.txt text eol=lf
+
+# Лог-файлы и временные
+*.log    text eol=lf
+
+# Для скриптов
+*.sh     text eol=lf
+*.bat    text eol=crlf

@@ -1,32 +1,39 @@
+using Mirror;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Finish : MonoBehaviour
+public class Finish : NetworkBehaviour
 {
     private AudioSource finishSound;
+    private GameManager gameManager;
+    private bool hasFinished = false;
 
-    private bool levelCompleted=false;
-   private void Start()
+    private void Start()
     {
         finishSound = GetComponent<AudioSource>();
+        // Предполагается, что в сцене есть только один GameManager
+        gameManager = FindFirstObjectByType<GameManager>();
     }
 
+    // Обработка коллизии только на сервере
+    [ServerCallback]
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player"&& !levelCompleted) 
-        { 
-        
-            finishSound.Play();
-            levelCompleted = true;
-            Invoke("CompleteLevel",2f);
-            
-        
+        if (hasFinished) return;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            hasFinished = true;
+            RpcPlayFinishSound();
+            //finishSound.Play();
+            gameManager.CompleteLevel();
         }
     }
-
-    private void CompleteLevel()
+    [ClientRpc]
+    private void RpcPlayFinishSound()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        if (finishSound != null && !finishSound.isPlaying)
+        {
+            finishSound.Play();
+        }
     }
-
 }
+
